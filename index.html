@@ -30,11 +30,51 @@
         justify-content: center;
       }
       canvas { display: block; }
+
+      /* Yatay-tasarım oyun: dokunmatik cihazda portre tutulursa çevirmeye yönlendir.
+         Sadece (orientation: portrait) + (pointer: coarse) => masaüstü dar pencerede ASLA görmez. */
+      #rotate {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: #05060e;
+        color: #00e5ff;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+        text-align: center;
+        letter-spacing: 2px;
+      }
+      #rotate .ico {
+        width: 64px;
+        height: 64px;
+        border: 3px solid #00e5ff;
+        border-radius: 10px;
+        animation: oc-rot 1.6s ease-in-out infinite;
+        box-shadow: 0 0 18px #00e5ff66;
+      }
+      #rotate .t1 { font-size: 18px; font-weight: 700; }
+      #rotate .t2 { font-size: 12px; color: #6a7bbd; letter-spacing: 1px; }
+      @keyframes oc-rot {
+        0%, 100% { transform: rotate(0deg); }
+        50% { transform: rotate(90deg); }
+      }
+      @media (orientation: portrait) and (pointer: coarse) {
+        #rotate { display: flex; }
+      }
     </style>
-    <script type="module" crossorigin src="./assets/index-Cx3ox1lX.js"></script>
+    <script type="module" crossorigin src="./assets/index-Bu_umpX2.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/phaser-CaWnzXme.js">
   </head>
   <body>
     <div id="game"></div>
+    <div id="rotate" aria-hidden="true">
+      <div class="ico"></div>
+      <div class="t1">CİHAZINI YATAY ÇEVİR</div>
+      <div class="t2">ROTATE TO LANDSCAPE</div>
+    </div>
   </body>
 </html>
