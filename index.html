@@ -32,6 +32,10 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        /* Çentik/ev-çubuğu güvenli alanı: oyun, kenar boşluklarının içine sığar → HUD asla kırpılmaz.
+           applyAspect() bu elemanın clientWidth/Height'ini okur, böylece canvas tam bu dikdörtgene oturur. */
+        box-sizing: border-box;
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
       }
       canvas { display: block; }
 
@@ -70,7 +74,7 @@
         #rotate { display: flex; }
       }
     </style>
-    <script type="module" crossorigin src="./assets/index-DoHV1exY.js"></script>
+    <script type="module" crossorigin src="./assets/index-CA36G_WM.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/phaser-CaWnzXme.js">
   </head>
   <body>
